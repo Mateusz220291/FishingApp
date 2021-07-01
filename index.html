@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fishing note</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="start">
+      <div class="container start__container">
+        <div class="logo container__logo">
+          <img class="img logo__img" src="pike.png" alt="szczupak" />
+          <h1 class="text logo__text">Fishing app</h1>
+        </div>
+        <h1>Witaj wędkarzu!</h1>
+        <button class="button container__button btnAdd">Dodaj połów</button>
+        <button class="button container__button btnList">
+          Wszystkie połowy
+        </button>
+      </div>
+    </section>
+    <section class="add hidden">
+      <form action="" class="form add__form">
+        <h2 class="form__title">Co dziś złowiłeś?</h2>
+        <div class="form__row">
+          <label for="" class="form__label">Gatunek</label>
+          <select name="" id="" class="form__input form__input--type">
+            <option value="pike">Szczupak</option>
+            <option value="zander">Sandacz</option>
+            <option value="perch">Okoń</option>
+            <option value="catfish">Sum</option>
+          </select>
+        </div>
+        <div class="form__row">
+          <label for="" class="form__label">Długość:</label>
+          <input
+            type="text"
+            class="form__input form__input--lenght"
+            placeholder="cm"
+          />
+        </div>
+        <div class="form__row">
+          <label for="" class="form__label">Waga:</label>
+          <input
+            type="text"
+            class="form__input form__input--weight"
+            placeholder="kg"
+          />
+        </div>
+        <div class="form__row">
+          <label for="" class="form__label">Przynęta:</label>
+          <input
+            type="text"
+            class="form__input form__input--bait"
+            placeholder="przynęta"
+          />
+        </div>
+        <div class="form__row">
+          <label for="" class="form__label">Notatki:</label>
+          <textarea
+            type="text"
+            class="form__input form__input--notes"
+            placeholder="notatki"
+          ></textarea>
+        </div>
+        <button class="form__btn button">Zapisz</button>
+      </form>
+    </section>
+    <section class="list hidden">
+      <button class="button return">Menu</button>
+      <ul class="fishes list__fishes">
+        <!-- <li class="fish fishes__fish">
+          
+          <h2 class="fish__name">Szczupak</h2>
+          <div class="fish__details">
+            <span class="fish__value">122</span>
+            <span class="fish__unit">cm</span>
+          </div>
+          <div class="fish__details">
+            <span class="fish__value">8,99</span>
+            <span class="fish__unit">kg</span>
+          </div>
+          <div class="fish__details">
+            <span class="fish__info">Westin Shad teez 12cm</span>
+          </div>
+          <div class="fish__details">
+            <span class="fish__info"
+              >Mała zatoczka nad rzeką Widawką w miejscowości Rogóźno</span
+            >
+          </div>
+          <button class="button">Usuń</button>
+          <button class="button">Edytuj</button>
+        </li>
+        <li class="fish fishes__fish">
+          <h2 class="fish__name">Sandacz</h2>
+          <div class="fish__details">
+            <span class="fish__value">100</span>
+            <span class="fish__unit">cm</span>
+          </div>
+          <div class="fish__details">
+            <span class="fish__value">5,99</span>
+            <span class="fish__unit">kg</span>
+          </div>
+          <div class="fish__details">
+            <span class="fish__info">Westin Shad teez 12cm</span>
+          </div>
+          <div class="fish__details">
+            <span class="fish__info"
+              >Mała zatoczka nad rzeką Widawką w miejscowości Rogóźno</span
+            >
+          </div>
+          <button class="button remove">Usuń</button>
+          <button class="button edit">Edytuj</button>
+        </li> -->
+      </ul>
+    </section>
+    <script defer src="index.js"></script>
+  </body>
+</html>

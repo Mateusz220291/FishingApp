@@ -1,0 +1,219 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.button {
+  border: 3px solid white;
+  color: white;
+  background-color: transparent;
+  padding: 10px 20px;
+  width: 50%;
+  font-weight: 600;
+  transition: 0.5s linear;
+  &:hover {
+    cursor: pointer;
+    color: black;
+    background-color: white;
+  }
+}
+.hidden {
+  display: none;
+}
+section {
+  background-image: url("/fishing.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start {
+  overflow-y: hidden;
+  .container {
+    display: flex;
+    width: 90vw;
+    height: 90vh;
+    max-width: 500px;
+    max-height: 500px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    padding: 2rem;
+    color: white;
+    .logo {
+      height: 40%;
+      img {
+        height: 60%;
+        object-fit: cover;
+      }
+      .text {
+        text-align: center;
+        font-family: "Yellowtail", cursive;
+        font-size: 4.5rem;
+        @media (orientation: landscape) and (max-width: 760px) {
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}
+
+.add {
+  overflow-y: hidden;
+  &__form {
+    display: grid;
+    color: white;
+    gap: 0.5rem 2.5rem;
+    width: 90vw;
+    height: 90vh;
+    max-width: 500px;
+    max-height: 500px;
+    border: 2px solid black;
+    padding: 30px;
+    @media (orientation: landscape) and (max-width: 760px) {
+      padding: 0 10px 5px;
+    }
+    .form__title {
+      font-size: 3rem;
+      padding: 10px;
+      text-align: center;
+      @media (orientation: landscape) and (max-width: 760px) {
+        font-size: 2rem;
+        padding: 0 10px;
+      }
+    }
+    .form__row {
+      display: flex;
+      .form__label {
+        flex: 0 0 50%;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      .form__input {
+        width: 100%;
+        padding: 0.3rem 1.1rem;
+        font-family: inherit;
+        font-size: 1.4rem;
+        border: none;
+        border-radius: 3px;
+        transition: all 0.2s;
+        :focus {
+          outline: none;
+          background-color: #fff;
+        }
+      }
+    }
+    .form__btn {
+      margin: auto;
+    }
+  }
+}
+
+.list {
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  .return {
+    margin-top: 50px;
+    max-width: 100px;
+  }
+  &__fishes {
+    height: auto;
+    list-style: none;
+    width: 90vw;
+    max-width: 600px;
+
+    color: white;
+    .fish {
+      margin: 20px;
+      border: 2px solid white;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 150px;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "nme nme nme pic"
+        "details-1 details-2 details-3 pic"
+        "details-notes details-notes details-notes pic"
+        "rmv edit . pic";
+      grid-gap: 10px;
+      @media (orientation: portrait) and (max-width: 760px) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+          "nme nme nme "
+          "details-1 details-2 details-3"
+          "details-notes details-notes details-notes"
+          "pic pic pic"
+          "rmv . edit";
+      }
+      &__img {
+        grid-area: pic;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &__name {
+        grid-area: nme;
+        width: 100%;
+        font-size: 2rem;
+        text-align: center;
+      }
+      &__details {
+        font-size: 1.5rem;
+      }
+      &__details--one {
+        grid-area: details-1;
+        width: 100%;
+      }
+      &__details--two {
+        grid-area: details-2;
+        width: 100%;
+      }
+      &__details--three {
+        grid-area: details-3;
+        width: 100%;
+      }
+      &__details--notes {
+        grid-area: details-notes;
+        width: 100%;
+      }
+      .remove {
+        grid-area: rmv;
+        width: 100%;
+        padding: 0;
+        border: 2px solid white;
+      }
+
+      .edit {
+        grid-area: edit;
+        padding: 5px;
+        width: 100%;
+        border: 2px solid white;
+      }
+    }
+  }
+}
