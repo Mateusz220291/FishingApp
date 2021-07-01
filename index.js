@@ -1,7 +1,7 @@
 "use strict";
-
 class Fish {
   date = new Date();
+  id = Date.now().toString().slice(-9);
   constructor(lenght, weight, bait, notes) {
     this.lenght = lenght;
     this.weight = weight;
@@ -78,14 +78,14 @@ const sectionAdd = document.querySelector(".add");
 const sectionList = document.querySelector(".list");
 
 class App {
-  fishes = [];
+  #fishes = [];
   constructor() {
     this._getLocalStorage();
     btnAdd.addEventListener("click", this._addFish);
     btnList.addEventListener("click", this._showList);
     btnRtrn.addEventListener("click", this._showStart);
     btnForm.addEventListener("click", this._newFish.bind(this));
-    btnRmve.forEach((item) => item.addEventListener("click", this._removeFish));
+    containerFishes.addEventListener("click", this._removeFish.bind(this));
   }
   _addFish() {
     sectionAdd.classList.remove("hidden");
@@ -96,11 +96,16 @@ class App {
       inputNotes.value =
         "";
   }
-  _removeFish(id) {
-    const fishes = [...this.fishes];
-    const index = fishes.findIndex((fish) => fish.id === id);
-    fishes.splice(index, 1);
-    return fishes;
+
+  _removeFish(e) {
+    const closeEl = e.target.closest(".remove");
+    if (!closeEl) return;
+    const fish = this.#fishes.find((fi) => fi.id === closeEl.dataset.id);
+    const fishEl = e.target.closest(".fish");
+
+    fishEl.style.display = "none";
+    this.#fishes.pop(fish);
+    this._setLocalStorage();
   }
   _showList() {
     sectionList.classList.remove("hidden");
@@ -151,13 +156,13 @@ class App {
       if (lenght > 270 || lenght < 70 || weight > 150) return outOfRange();
       fish = new Catfish(lenght, weight, bait, notes);
     }
-    this.fishes.push(fish);
+    this.#fishes.push(fish);
     this._renderFish(fish);
     this._showList();
     this._setLocalStorage();
   }
   _renderFish(fish) {
-    let html = `<li class="fish fishes__fish">
+    let html = `<li class="fish fishes__fish" data-id="${fish.id}" >
     <img class = "fish__img" src="${fish.type}.jpg" alt="">
     <h2 class="fish__name">${fish.description}</h2>
     <div class="fish__details fish__details--one">
@@ -182,13 +187,13 @@ class App {
     containerFishes.insertAdjacentHTML("beforeend", html);
   }
   _setLocalStorage() {
-    localStorage.setItem("fishes", JSON.stringify(this.fishes));
+    localStorage.setItem("fishes", JSON.stringify(this.#fishes));
   }
   _getLocalStorage() {
     const data = JSON.parse(localStorage.getItem("fishes"));
     if (!data) return;
-    this.fishes = data;
-    this.fishes.forEach((fi) => {
+    this.#fishes = data;
+    this.#fishes.forEach((fi) => {
       this._renderFish(fi);
     });
   }
